@@ -9,7 +9,7 @@ public class Main {
         int size = MPI.COMM_WORLD.Size();
 
         if (rank == 0) {
-            Graph g = new Graph(1000);
+            Graph g = new Graph(100000);
             coloringMaster(g, size);
         } else {
             coloringSlave(rank, size);

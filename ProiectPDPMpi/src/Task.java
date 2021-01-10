@@ -5,21 +5,18 @@ public class Task {
 
     public static int[] graphColoringTask(Graph graph, int start, int end, boolean[] available, int[] result) {
         for (int u = start; u < end; u++) {
-            // Process all adjacent vertices and flag their colors
-            // as unavailable
             Iterator<Integer> it = graph.getAdj(u).iterator();
             while (it.hasNext()) {
                 int i = it.next();
                 if (result[i] != -1)
                     available[result[i]] = false;
             }
-            // Find the first available color
             int cr;
             for (cr = 0; cr < graph.getSize(); cr++) {
                 if (available[cr])
                     break;
             }
-            result[u] = cr; // Assign the found color
+            result[u] = cr; 
             Arrays.fill(available, true);
         }
         return result;

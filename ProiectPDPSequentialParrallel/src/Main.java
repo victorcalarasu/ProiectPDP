@@ -7,7 +7,7 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
     public static void main(String args[]) throws InterruptedException {
-        Graph g1 = new Graph(1000);
+        Graph g1 = new Graph(10000);
         //g1.printGraph();
         System.out.println("Sequential Coloring:");
         long startTime =System.currentTimeMillis();

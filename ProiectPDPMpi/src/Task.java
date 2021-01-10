@@ -25,22 +25,22 @@ public class Task {
         return result;
     }
 
-    public static int[] constructResult(Graph g, Object[] results, int size) {
-        int[] finalResult = new int[g.getSize()];
-        int step = g.getSize() / (size - 1);
-        int start = 0;
-        int end = step;
-        for (int i = 0; i < size-1; i++) {
-            for (int j = start; j < end; j++) {
-                int[] smallResult = (int[]) results[i];
-                finalResult[j] = smallResult[j];
-            }
-            start += step;
-            if (i == size - 2) {
-                end = g.getSize();
-            } else
-                end += step;
-        }
-        return finalResult;
-    }
+//    public static int[] constructResult(Graph g, Object[] results, int size) {
+//        int[] finalResult = new int[g.getSize()];
+//        int step = g.getSize() / (size - 1);
+//        int start = 0;
+//        int end = step;
+//        for (int i = 0; i < size-1; i++) {
+//            for (int j = start; j < end; j++) {
+//                int[] smallResult = (int[]) results[i];
+//                finalResult[j] = smallResult[j];
+//            }
+//            start += step;
+//            if (i == size - 2) {
+//                end = g.getSize();
+//            } else
+//                end += step;
+//        }
+//        return finalResult;
+//    }
 }

@@ -7,13 +7,13 @@ import java.util.concurrent.locks.ReentrantLock;
 
 public class Main {
     public static void main(String args[]) throws InterruptedException {
-        Graph g1 = new Graph(10000);
+        Graph g1 = new Graph(1000);
         //g1.printGraph();
         System.out.println("Sequential Coloring:");
-        long startTime = System.nanoTime();
+        long startTime =System.currentTimeMillis();
         int[] result1=g1.greedyColoring();
-        long endTime = System.nanoTime();
-        long duration = (endTime - startTime) / 1000000;
+        long endTime = System.currentTimeMillis();
+        long duration = (endTime - startTime);
         if(!verifyColoring(g1,result1)){
             System.out.println("ERROR AT SEQUENTIAL");
         }
@@ -25,10 +25,10 @@ public class Main {
         }
 
 
-        long startTime2 = System.nanoTime();
+        long startTime2 = System.currentTimeMillis();
         int[] result2=ParallelColoringTasks(g1,10);
-        long endTime2 = System.nanoTime();
-        long duration2 = (endTime2 - startTime2) / 1000000;
+        long endTime2 = System.currentTimeMillis();
+        long duration2 = (endTime2 - startTime2);
         System.out.println("Parallel Coloring:");
         if(!verifyColoring(g1,result2)){
             System.out.println("ERROR AT PARALLEL");

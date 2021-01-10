@@ -9,7 +9,7 @@ public class Main {
         int size = MPI.COMM_WORLD.Size();
 
         if (rank == 0) {
-            Graph g = new Graph(100);
+            Graph g = new Graph(1000);
             coloringMaster(g, size);
         } else {
             coloringSlave(rank, size);
@@ -94,15 +94,11 @@ public class Main {
         MPI.COMM_WORLD.Recv(start, 0, 1, MPI.INT, 0, 0);
         MPI.COMM_WORLD.Recv(end, 0, 1, MPI.INT, 0, 0);
 
-        if (rank == 1){
-            int[] newResult = Task.graphColoringTask((Graph) g[0], start[0], end[0], (boolean[]) available[0], result);
-            MPI.COMM_WORLD.Send(new Object[]{newResult}, 0, 1, MPI.OBJECT, rank+1, 0);
-        }
-        else if (rank == size-1){
+       if (rank == size-1){
             int[] newResult = Task.graphColoringTask((Graph) g[0], start[0], end[0], (boolean[]) available[0], result);
             MPI.COMM_WORLD.Send(new Object[]{newResult}, 0, 1, MPI.OBJECT, 0, 0);
-        }
-        else{
+       }
+       else{
             int[] newResult = Task.graphColoringTask((Graph) g[0], start[0], end[0], (boolean[]) available[0], result);
             MPI.COMM_WORLD.Send(new Object[]{newResult}, 0, 1, MPI.OBJECT, rank +1, 0);
         }
